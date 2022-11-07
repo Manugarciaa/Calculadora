@@ -1,0 +1,424 @@
+package ordenamiento;
+
+import java.util.Arrays;
+import javax.swing.table.DefaultTableModel;
+
+public class main extends javax.swing.JFrame {
+
+    DefaultTableModel model = new DefaultTableModel();
+
+    public main() {
+        initComponents();
+        model.addColumn("Metodo");
+        model.addColumn("Tiempo de Ejecucion");
+        model.addColumn("Cantidad de Pasadas");
+        model.addColumn("Cantidad de Intercambios");
+        model.addColumn("Cantidad de Comparaciones");
+        jTableDatos.setModel(model);
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jButtonGenerarArrayRandom = new javax.swing.JButton();
+        jButtonGenerarArrayRandomDesendente = new javax.swing.JButton();
+        jButtonGenerarArrayRandomAcendente = new javax.swing.JButton();
+        jButtonArrayManual = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableDatos = new javax.swing.JTable();
+        jLabelArray = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldLongitud = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(978, 567));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setForeground(new java.awt.Color(102, 102, 102));
+        jPanel1.setMaximumSize(new java.awt.Dimension(978, 567));
+        jPanel1.setMinimumSize(new java.awt.Dimension(978, 567));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonGenerarArrayRandom.setText("Generar Arreglo Aleatorio");
+        jButtonGenerarArrayRandom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerarArrayRandomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonGenerarArrayRandom, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jButtonGenerarArrayRandomDesendente.setText("Generar Arreglo Aleatorio de forma Decendente");
+        jButtonGenerarArrayRandomDesendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerarArrayRandomDesendenteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonGenerarArrayRandomDesendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+
+        jButtonGenerarArrayRandomAcendente.setText("Generar Arreglo Aleatorio de forma Acendente");
+        jButtonGenerarArrayRandomAcendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerarArrayRandomAcendenteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonGenerarArrayRandomAcendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
+
+        jButtonArrayManual.setText("Ingresar el Arreglo Manualmente");
+        jButtonArrayManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonArrayManualActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonArrayManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 840, 30));
+
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTableDatos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 870, 320));
+
+        jLabelArray.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelArray.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabelArray, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 610, 30));
+
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Sleccionar la longitud del arreglo:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, 20));
+
+        jTextFieldLongitud.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldLongitud.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldLongitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldLongitudActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 140, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>                        
+
+    private void jButtonGenerarArrayRandomActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        int arr = Integer.parseInt(jTextFieldLongitud.getText());
+        int[] arregloBurbuja = new int[arr];
+        int[] arregloInsersion = new int[arr];
+        int[] arregloSeleccion = new int[arr];
+        int[] arregloShell = new int[arr];
+        int[] arregloMerge = new int[arr];
+        int[] arregloQuicksort = new int[arr];
+        
+        llenarArrayAleatorio(arregloBurbuja);
+        arregloInsersion = arregloBurbuja.clone();
+        arregloSeleccion = arregloBurbuja.clone();
+        arregloShell = arregloBurbuja.clone();
+        arregloMerge = arregloBurbuja.clone();
+        arregloQuicksort = arregloBurbuja.clone();
+        
+        burbuja(arregloBurbuja);
+        insercionDirecta(arregloInsersion);
+        seleccion(arregloSeleccion);
+        shell(arregloShell);
+        ordenacionMergeSort(arregloMerge);
+        Quicksort(arregloQuicksort, 0, arregloQuicksort.length - 1);
+
+        jLabelArray.setText("Arreglo Generado Correctamente");
+
+    }                                                         
+
+    private void jButtonArrayManualActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+
+    }                                                  
+
+    private void jButtonGenerarArrayRandomAcendenteActionPerformed(java.awt.event.ActionEvent evt) {                                                                   
+        int arr = Integer.parseInt(jTextFieldLongitud.getText());
+        int[] arreglo = new int[arr];
+        llenarArrayAleatorio(arreglo);
+
+        //Ordenar A.
+        jLabelArray.setText("Arreglo Generado Correctamente");
+    }                                                                  
+
+    private void jButtonGenerarArrayRandomDesendenteActionPerformed(java.awt.event.ActionEvent evt) {                                                                    
+        int arr = Integer.parseInt(jTextFieldLongitud.getText());
+        int[] arreglo = new int[arr];
+        llenarArrayAleatorio(arreglo);
+        // arregloOrdenado = Ordenar D.
+        jLabelArray.setText("Arreglo Generado Correctamente");
+    }                                                                   
+
+    private void jTextFieldLongitudActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        // TODO add your handling code here:
+    }                                                  
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new main().setVisible(true);
+            }
+        });
+    }
+
+    public void llenarArrayAleatorio(int[] arreglo) {
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = (int) (Math.random() * 100) + 1;
+        }
+    }
+
+    public void mostrarArrayOrdenado(int arreglo[]) {
+        int i = 0;
+        System.out.print("Arreglo Ordenado: ");
+        for (i = 0; i < arreglo.length; i++) {
+            System.out.print("[" + arreglo[i] + "]");
+        }
+        System.out.println();
+    }
+
+    public void mostrarArray(int arreglo[]) {
+        int i = 0;
+        System.out.print("Arreglo: ");
+        for (i = 0; i < arreglo.length; i++) {
+            System.out.print("[" + arreglo[i] + "]");
+        }
+        System.out.println();
+    }
+
+    public void TablaDatos(String metodo, int pasadas, int intercambios, int comparaciones, long tiempoFinal) {
+        Object[] datos = new Object[5];
+        datos[0] = metodo;
+        datos[1] = tiempoFinal + "ms";
+        datos[2] = pasadas;
+        datos[3] = intercambios;
+        datos[4] = comparaciones;
+        model.addRow(datos);
+    }
+
+    public void burbuja(int[] arreglo) {
+        int temp, Pasadas = 0, Comparaciones = 0, Intercambios = 0;
+        long tiempoInicial, tiempoFinal;
+        
+        tiempoInicial = System.currentTimeMillis();
+        
+        Comparaciones++;
+        for (int i = 1; i < arreglo.length; i++) {
+            for (int j = 0; j < arreglo.length - 1; j++) {
+                Comparaciones++;
+                if (arreglo[j] > arreglo[j + 1]) {
+                    temp = arreglo[j];
+                    arreglo[j] = arreglo[j + 1];
+                    arreglo[j + 1] = temp;
+                    Intercambios++;
+                }
+            }
+            Pasadas++;
+        }
+        tiempoFinal = System.currentTimeMillis() - tiempoInicial;
+        System.out.print("Burbuja. OK\n");
+        TablaDatos("Burbuja",Pasadas,Intercambios,Comparaciones,tiempoFinal);
+    }
+
+    public void insercionDirecta(int arreglo[]) {
+        int aux, Pasadas = 0, Comparaciones = 0, Intercambios = 0, p, j;
+        long tiempoInicial, tiempoFinal;
+        
+        tiempoInicial = System.currentTimeMillis();
+        
+        for (p = 1; p < arreglo.length; p++) {
+            aux = arreglo[p];
+            j = p - 1;
+            Comparaciones++;
+            while ((j >= 0) && (aux < arreglo[j])) {
+                arreglo[j + 1] = arreglo[j];
+                j--;
+                Intercambios++;
+
+            }
+            arreglo[j + 1] = aux;
+            
+            Pasadas++;
+        }
+        tiempoFinal = System.currentTimeMillis() - tiempoInicial;
+        System.out.print("Insercion Directa. OK\n");
+        TablaDatos("Insercion",Pasadas,Intercambios,Comparaciones,tiempoFinal);
+    }
+
+    public void seleccion(int arreglo[]) {
+        int i, j, menor, pos, tmp, Pasadas = 0, Comparaciones = 0, Intercambios = 0;
+        long tiempoInicial, tiempoFinal;
+        
+        tiempoInicial = System.currentTimeMillis();
+        
+        for (i = 0; i < arreglo.length - 1; i++) {
+            Pasadas++;
+            menor = arreglo[i];
+            pos = i;
+            for (j = i + 1; j < arreglo.length; j++) {
+                Comparaciones++;
+                if (arreglo[j] < menor) {
+                    menor = arreglo[j];
+                    pos = j;
+                    Intercambios++;
+                }
+            }
+            Comparaciones++;
+            if (pos != i) {
+                tmp = arreglo[i];
+                arreglo[i] = arreglo[pos];
+                arreglo[pos] = tmp;
+            }
+        }
+        tiempoFinal = System.currentTimeMillis() - tiempoInicial;
+        System.out.print("Seleccion. OK\n");
+        TablaDatos("Seleccion",Pasadas,Intercambios,Comparaciones,tiempoFinal);
+    }
+
+    public static void shell(int[] arreglo) {
+
+        int salto, aux, i;
+        boolean cambios;
+
+        for (salto = arreglo.length / 2; salto != 0; salto /= 2) {
+            cambios = true;
+            while (cambios) {
+                cambios = false;
+                for (i = salto; i < arreglo.length; i++) {
+                    if (arreglo[i - salto] > arreglo[i]) {
+                        aux = arreglo[i];
+                        arreglo[i] = arreglo[i - salto];
+                        arreglo[i - salto] = aux;
+                        cambios = true;
+                    }
+                }
+            }
+        }
+        System.out.print("Shell. OK\n");
+    }
+
+    public static void ordenacionMergeSort(int[] arreglo) {
+        if (arreglo.length <= 1) {
+            return;
+        }
+        int mitad = arreglo.length / 2;
+        int izq[] = Arrays.copyOfRange(arreglo, 0, mitad);
+        int der[] = Arrays.copyOfRange(arreglo, mitad, arreglo.length);
+        ordenacionMergeSort(izq);
+        ordenacionMergeSort(der);
+        combinarVector(arreglo, izq, der);
+    }
+
+    public static void combinarVector(int arreglo[], int izq[], int der[]) {
+        int i = 0;
+        int j = 0;
+        for (int k = 0; k < arreglo.length; k++) {
+            if (i >= izq.length) {
+                arreglo[k] = der[j];
+                j++;
+                continue;
+            }
+            if (j >= der.length) {
+                arreglo[k] = izq[i];
+                i++;
+                continue;
+            }
+            if (izq[i] < der[j]) {
+                arreglo[k] = izq[i];
+                i++;
+            } else {
+                arreglo[k] = der[j];
+                j++;
+            }
+        }
+    }
+
+    void Quicksort(int[] arreglo, int first, int last) {
+        int i = first, j = last;
+        int pivote = arreglo[(first + last) / 2];
+        int auxiliar;
+
+        do {
+            while (arreglo[i] < pivote) {
+                i++;
+            }
+            while (arreglo[j] > pivote) {
+                j--;
+            }
+
+            if (i <= j) {
+                auxiliar = arreglo[j];
+                arreglo[j] = arreglo[i];
+                arreglo[i] = auxiliar;
+                i++;
+                j--;
+            }
+        } while (i <= j);
+
+        if (first < j) {
+            Quicksort(arreglo, first, j);
+        } else if (last > i) {
+            Quicksort(arreglo, i, last);
+        } else {
+            System.out.print("Quicksort. OK\n");
+        }
+    }
+
+    // Variables declaration - do not modify                     
+    protected static javax.swing.JButton jButtonArrayManual;
+    protected static javax.swing.JButton jButtonGenerarArrayRandom;
+    protected static javax.swing.JButton jButtonGenerarArrayRandomAcendente;
+    protected static javax.swing.JButton jButtonGenerarArrayRandomDesendente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelArray;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTableDatos;
+    protected static javax.swing.JTextField jTextFieldLongitud;
+    // End of variables declaration                   
+}
